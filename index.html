@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- NavBar -->
+    <header>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
+            <div class="container">
+                <a class="navbar-brand" href=""> Task Manager</a>
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active">Dash-Board</a></li>
+                        <li class="nav-item"><a class="nav-link">Tasks</a></li>
+                        <li class="nav-item"><a class="nav-link" href=""> Reports</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- BreadCrumb: Navigation Path -->
+        <nav class="m-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">DashBoard</a></li>
+                <li class="breadcrumb-item active ">Tasks</li>
+            </ol>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <!-- Button: For triggering actions -->
+            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                Add Task</button>
+            <!-- Card: Used for displaying content in structured format -->
+            <div class="card">
+                <div class="card-header">
+                    Task List
+                </div>
+                <div class="card-body">
+                    <!-- List Group: This is for Displaying Cards -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item active d-flex justify-content-between align-items-center">Task-1
+                            <!-- Badge: Indicates some message -->
+                            <span class="badge bg-success rounded-pill">New</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Task-2
+                            <span class="badge bg-warning rounded-pill">In-Progress</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Task-3
+                            <span class="badge bg-danger rounded-pill">Cancelled</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Modal: Critical for displaying alerts -->
+                <div class="modal fade " id="addTaskModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add Task</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="">
+                                    <div class="mb-3">
+                                        <label for="taskName" class="form-label"> Task Name</label>
+                                        <input class="form-control" type="text" placeholder="Enter task name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for=""> Task Description</label>
+                                        <textarea class="form-control" type="text" placeholder="Enter Task Description"
+                                            id=""></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="taskStatus">Task Status</label>
+                                        <select class="form-select" name="" id="taskStatus">
+                                            <option selected> New</option>
+                                            <option selected> In-Progress</option>
+                                            <option selected>Completed</option>
+                                            <option selected> Cancelled</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Save Task</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Dropdown useful for provideing list of actions or filters -->
+            <div class="dropdown mt-3">
+                <button class=" btn btn-secondary dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown">Actions</button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Edit Task</a></li>
+                    <li><a class="dropdown-item" href="#">Delete Task</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Mark as Completed </a></li>
+                </ul>
+            </div>
+
+            <!-- Navs and bars: Allows organising content into differernt sections or views  -->
+            <ul class="nav nav-tabs mt-3">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#allTasks"
+                        type="button"> All Tasks </button> </li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#completedTasks"
+                        type="button"> Completed Tasks</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#PendingTasks"
+                        type="button">Pending Tasks</button></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane show fade active" id="allTasks">
+                    <p>All the tasks will display here.</p>
+                </div>
+                <div class="tab-pane fade" id="completedTasks">
+                    <p>All the completed tasks will dsplay here.</p>
+                </div>
+                <div class="tab-pane fade" id="PendingTasks">
+                    <p>Pensing Tasks will display here.</p>
+                </div>
+            </div>
+            <!-- Pagination: Essential for navigation through long lists or sets of data -->
+            <nav>
+                <ul class="pagination justify-content-center mt-4">
+                    <li class="page-item">
+                        <a class="page-link " href="#">Previous</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link active" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item"><a class="page-link " href="#">4</a></li>
+                    <li class="page-item"><a class="page-link disabled" href="#">next</a></li>
+                </ul>
+            </nav>
+            <!-- Tooltips: Provides additional information while hover -->
+            <button class="btn btn-info mt-4" data-bs-toggle="tooltip" data-bs-title="Navigating to document page "> Go
+                to Documnents</button>
+
+            <!-- PopOvers: Similar to tooltip but with more interactions-->
+            <button type="button" class="btn bt-danger mt-4 ms-2" data-bs-toggle="popover" title="Task Update" data-bs-content="Everything is upto date proceed to continue!">Save Changes</button>
+        </div>
+    </main>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+    </script>
+</body>
+
+</html>
